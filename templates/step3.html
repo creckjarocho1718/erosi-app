@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paso 3 – Test Erosi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paso {{ current_step }} – Rango de edad</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body style="background: url('{{ url_for('static', filename='images/bg3.jpg') }}') no-repeat center center; background-size: cover;">
-  <div class="progress-container">
-    <div class="progress-bar" style="width: 75.0%;"></div>
+<body style="
+    background: url('{{ url_for('static', filename='images/bg3.jpg') }}') no-repeat center center;
+    background-size: cover;
+    position: relative;
+">
+  <!-- Logo fijo -->
+  <div class="logo-container" style="position: absolute; top: 1rem; left: 1rem;">
+    <img src="{{ url_for('static', filename='assets/logo_white.png') }}"
+         alt="Dr. Erosi Logo"
+         style="width: 60px; height: auto;">
   </div>
+
+  <!-- Barra de progreso al 75% -->
+  <div class="progress-container">
+    <div class="progress-bar" style="width: 75%;"></div>
+  </div>
+
   <div class="content">
-    <h2>Paso 3: Tu Pregunta Aquí</h2>
+    <h2>Selecciona tu rango de edad</h2>
     <div class="options">
-      <!-- Ejemplo de opciones, reemplaza src y labels -->
-      <div class="option" onclick="location.href='/test/4'">
-        <img src="{{ url_for('static', filename='images/bg3.jpg') }}" alt="Opción 1">
+      <div class="option" onclick="location.href='{{ url_for('test_step', step=4) }}'">
+        <img src="{{ url_for('static', filename='images/edad_18-30.png') }}" alt="18-30 años">
+        <span>18-30 años</span>
       </div>
-      <div class="option" onclick="location.href='/test/4'">
-        <img src="{{ url_for('static', filename='images/bg3.jpg') }}" alt="Opción 2">
+      <div class="option" onclick="location.href='{{ url_for('test_step', step=4) }}'">
+        <img src="{{ url_for('static', filename='images/edad_30-40.png') }}" alt="30-40 años">
+        <span>30-40 años</span>
+      </div>
+      <div class="option" onclick="location.href='{{ url_for('test_step', step=4) }}'">
+        <img src="{{ url_for('static', filename='images/edad_40-50.png') }}" alt="40-50 años">
+        <span>40-50 años</span>
+      </div>
+      <div class="option" onclick="location.href='{{ url_for('test_step', step=4) }}'">
+        <img src="{{ url_for('static', filename='images/edad_50plus.png') }}" alt="50+ años">
+        <span>50+ años</span>
       </div>
     </div>
   </div>

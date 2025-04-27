@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paso 4 – Test Erosi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paso {{ current_step }} – ¿Qué buscas?</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body style="background: url('{{ url_for('static', filename='images/bg4.jpg') }}') no-repeat center center; background-size: cover;">
-  <div class="progress-container">
-    <div class="progress-bar" style="width: 100.0%;"></div>
+<body style="
+    background: url('{{ url_for('static', filename='images/bg4.jpg') }}') no-repeat center center;
+    background-size: cover;
+    position: relative;
+">
+  <!-- Logo fijo -->
+  <div class="logo-container" style="position: absolute; top: 1rem; left: 1rem;">
+    <img src="{{ url_for('static', filename='assets/logo_white.png') }}"
+         alt="Dr. Erosi Logo"
+         style="width: 60px; height: auto;">
   </div>
+
+  <!-- Barra de progreso al 100% -->
+  <div class="progress-container">
+    <div class="progress-bar" style="width: 100%;"></div>
+  </div>
+
   <div class="content">
-    <h2>Paso 4: Tu Pregunta Aquí</h2>
+    <h2>¿Cuál es tu principal inquietud?</h2>
     <div class="options">
-      <!-- Ejemplo de opciones, reemplaza src y labels -->
-      <div class="option" onclick="location.href='/chat'">
-        <img src="{{ url_for('static', filename='images/bg4.jpg') }}" alt="Opción 1">
+      <div class="option" onclick="location.href='{{ url_for('chat') }}'">
+        <span style="font-size:2rem;">❓</span>
+        <p>Dudas sobre anatomía</p>
       </div>
-      <div class="option" onclick="location.href='/chat'">
-        <img src="{{ url_for('static', filename='images/bg4.jpg') }}" alt="Opción 2">
+      <div class="option" onclick="location.href='{{ url_for('chat') }}'">
+        <span style="font-size:2rem;">💬</span>
+        <p>Problemas de comunicación</p>
+      </div>
+      <div class="option" onclick="location.href='{{ url_for('chat') }}'">
+        <span style="font-size:2rem;">🌈</span>
+        <p>Exploración de orientación</p>
+      </div>
+      <div class="option" onclick="location.href='{{ url_for('chat') }}'">
+        <span style="font-size:2rem;">❤️</span>
+        <p>Mejorar la intimidad</p>
+      </div>
+      <div class="option" onclick="location.href='{{ url_for('chat') }}'">
+        <span style="font-size:2rem;">🩺</span>
+        <p>Salud sexual</p>
       </div>
     </div>
   </div>
