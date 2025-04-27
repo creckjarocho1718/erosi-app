@@ -1,101 +1,87 @@
+/* static/css/login.css */
 
+/* Reset mínimo */
 html, body {
-  height: 100%;
   margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    height: 100%;
-    overflow: hidden;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* Fondo full?screen */
 .background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   background: url('../assets/bg2.jpg') no-repeat center center;
-  /* â€¦ */
+  background-size: cover;   /* Ajusta para cubrir todo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-    background-size: cover;
-    width: 100vw;
-    background-position: center;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
-
+/* Capa semitransparente si la tenías */
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Ajusta el color/opa según tu diseño */
+  background: rgba(0, 0, 0, 0.4);
 }
 
+/* Contenido centrado */
 .content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-    color: #ffffff;
-    padding: 0 20px;
+  position: relative;
+  z-index: 1;               /* Sobre la overlay */
+  width: 90%;
+  max-width: 350px;         /* Ancho máximo en móviles grandes */
+  text-align: center;
+  color: #fff;              /* Texto blanco sobre el fondo */
 }
 
+/* Logo */
 .logo {
-    width: 150px;
-    margin-bottom: 20px;
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
+/* Botón de Google */
 .google-btn {
-    margin-top: 30px;
-    background-color: white;
-    color: #555;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #fff;
+  color: #444;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .google-btn img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
 }
 
-.zoom-hover:hover {
-    transform: scale(1.05);
-    background-color: #eee;
+.google-btn:hover {
+  transform: scale(1.05);
 }
 
-.animated {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInMove 1s forwards;
-    animation-delay: 0.2s;
+/* Títulos y párrafos */
+.content h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.pulse {
-    animation: pulse 2s infinite;
-}
-
-@keyframes fadeInMove {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+.content p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
