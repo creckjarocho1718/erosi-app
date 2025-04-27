@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paso {{ current_step }} – Avatar y voz</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="background: #000; position: relative;">
+  <div class="logo-container" style="position:absolute;top:1rem;left:1rem;">
+    <img src="{{ url_for('static', filename='assets/logo_white.png') }}"
+         alt="Dr. Erosi Logo" style="width:60px;">
+  </div>
+  <div class="progress-container">
+    <div class="progress-bar" style="width:100%;"></div>
+  </div>
+  <div class="content">
+    <h2>Selecciona tu avatar y voz</h2>
+    <div class="options">
+      <div class="option" onclick="location.href='{{ url_for('chat') }}'">
+        <img src="{{ url_for('static', filename='assets/avatar_male.png') }}" alt="Avatar hombre">
+        <span>Dr. Erosi (Masculino)</span>
+        <p>Voz: Fuerte y cálida</p>
+      </div>
+      <div class="option" onclick="location.href='{{ url_for('chat') }}'">
+        <img src="{{ url_for('static', filename='assets/avatar_female.png') }}" alt="Avatar mujer">
+        <span>Dr. Erosi (Femenino)</span>
+        <p>Voz: Suave y amigable</p>
+      </div>
+      <div class="option" onclick="location.href='{{ url_for('chat') }}'">
+        <img src="{{ url_for('static', filename='assets/avatar_andro.png') }}" alt="Avatar andrógino">
+        <span>Dr. Erosi (Andrógino)</span>
+        <p>Voz: Neutral y profesional</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
