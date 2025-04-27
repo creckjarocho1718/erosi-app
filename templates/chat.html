@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat de Erosi</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chat de Dr. Erosi</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}" />
 </head>
 <body>
-  <div class="logo-container" style="position:absolute;top:1rem;left:1rem;">
-    <img src="{{ url_for('static', filename='assets/' + avatar) }}" alt="Avatar Dr. Erosi" style="width:60px;">
+  <!-- Avatar animado -->
+  <div class="avatar-container">
+    <img id="erosi-avatar" src="{{ url_for('static', filename='assets/' + avatar) }}"
+         alt="Dr. Erosi" />
   </div>
-  <a href="{{ url_for('logout') }}" style="position:absolute;top:1rem;right:1rem;color:#000;">Cerrar sesión</a>
-  <div class="content">
-    <h1>Dr. Erosi te da la bienvenida</h1>
-    <p>¿En qué puedo ayudarte?</p>
-  </div>
+
+  <!-- Área de chat -->
+  <div id="chat-window" class="chat-window"></div>
+
+  <!-- Input de usuario -->
+  <form id="chat-form" class="chat-form">
+    <input id="user-input" type="text" placeholder="Escribe tu mensaje…" autocomplete="off" />
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 </body>
 </html>
