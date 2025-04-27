@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, session, request
 from flask_dance.contrib.google import make_google_blueprint, google
 import os
 
@@ -30,8 +30,12 @@ def login():
 def test_step(step):
     if not google.authorized:
         return redirect(url_for("login"))
-    # Admit steps 1-5
-    if 1 <= step <= 5:
+    # Capture gender selection on step 1
+    if step == 2:
+        gender = request.args.get('gender')
+        if gender in ['male', 'female', 'other']:
+            session['user_gender'] = gender
+    if 1 <= step <= 4:
         return render_template(f"step{step}.html", current_step=step)
     return redirect(url_for("chat"))
 
@@ -39,7 +43,15 @@ def test_step(step):
 def chat():
     if not google.authorized:
         return redirect(url_for("login"))
-    return render_template("chat.html")
+    # Determine avatar based on stored gender
+    gender = session.get('user_gender', 'other')
+    if gender == 'male':
+        avatar = 'avatar_female.png'
+    elif gender == 'female':
+        avatar = 'avatar_male.png'
+    else:
+        avatar = 'avatar_andro.png'
+    return render_template("chat.html", avatar=avatar)
 
 @app.route("/logout")
 def logout():

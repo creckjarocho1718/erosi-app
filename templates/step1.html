@@ -13,15 +13,15 @@
   <div class="content">
     <h2>¿Cuál es tu género?</h2>
     <div class="options">
-      <div class="option" onclick="location.href='{{ url_for('test_step', step=2) }}'">
+      <div class="option" onclick="location.href='{{ url_for('test_step', step=2) }}?gender=male'">
         <img src="{{ url_for('static', filename='images/icons/hombre.png') }}" alt="Hombre">
         <span>Hombre</span>
       </div>
-      <div class="option" onclick="location.href='{{ url_for('test_step', step=2) }}'">
+      <div class="option" onclick="location.href='{{ url_for('test_step', step=2) }}?gender=female'">
         <img src="{{ url_for('static', filename='images/icons/mujer.png') }}" alt="Mujer">
         <span>Mujer</span>
       </div>
-      <div class="option" onclick="location.href='{{ url_for('test_step', step=2) }}'">
+      <div class="option" onclick="location.href='{{ url_for('test_step', step=2) }}?gender=other'">
         <img src="{{ url_for('static', filename='images/icons/otro.png') }}" alt="Otro">
         <span>Otro</span>
       </div>
