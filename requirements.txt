@@ -1,2 +1,4 @@
 Flask>=2.0
 gunicorn
+Flask-Dance
+urlobject==2.4.2
