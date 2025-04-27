@@ -30,20 +30,21 @@ def login():
 def test_step(step):
     if not google.authorized:
         return redirect(url_for("login"))
-    # Capture gender selection on step1 (redirected to step2 with query param)
+    # Capture gender selection on step1
     if step == 2:
         gender = request.args.get('gender')
         if gender in ['male', 'female', 'other']:
             session['user_gender'] = gender
-    if 1 <= step <= 5:
+    # Steps 1-4
+    if 1 <= step <= 4:
         return render_template(f"step{step}.html", current_step=step)
+    # After step4, go to chat
     return redirect(url_for("chat"))
 
 @app.route("/chat")
 def chat():
     if not google.authorized:
         return redirect(url_for("login"))
-    # Determine avatar based on stored gender
     gender = session.get('user_gender', 'other')
     if gender == 'male':
         avatar_file = 'avatar_female.png'
@@ -51,7 +52,6 @@ def chat():
         avatar_file = 'avatar_male.png'
     else:
         avatar_file = 'avatar_andro.png'
-    # Pass only file name, use url_for in template
     return render_template('chat.html', avatar_file=avatar_file)
 
 @app.route("/logout")
