@@ -8,6 +8,23 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+/* Header with logo */
+.chat-header {
+  display: flex;
+  align-items: center;
+  background: #e91e63;
+  padding: 0.5rem 1rem;
+}
+.chat-header .app-logo {
+  width: 40px;
+  margin-right: 1rem;
+}
+.chat-header h1 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
 .avatar-container {
   position: relative;
   width: 100%;
@@ -21,7 +38,7 @@ body {
   animation: idle 1s infinite;
 }
 
-/* Animación de labios: cambia escala vertical */
+/* Animación */
 @keyframes speaking {
   0%, 100% { transform: scaleY(1); }
   50%      { transform: scaleY(0.85); }

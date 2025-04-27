@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chat de Dr. Erosi</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}" />
 </head>
 <body>
+  <!-- Logo de la app -->
+  <header class="chat-header">
+    <img src="{{ url_for('static', filename='assets/logo_white.png') }}"
+         alt="Ecstasy Logo" class="app-logo" />
+    <h1>Chat con Dr. Erosi</h1>
+  </header>
+
   <!-- Avatar animado -->
   <div class="avatar-container">
     <img id="erosi-avatar" src="{{ url_for('static', filename='assets/' + avatar) }}"
