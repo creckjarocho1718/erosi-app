@@ -3,12 +3,16 @@ from flask_dance.contrib.google import make_google_blueprint, google
 import os
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "secret")
+app.secret_key = os.environ.get("SECRET_KEY", "una_clave_segura")
 
 google_bp = make_google_blueprint(
     client_id=os.environ.get("GOOGLE_OAUTH_CLIENT_ID"),
     client_secret=os.environ.get("GOOGLE_OAUTH_CLIENT_SECRET"),
-    scope=["openid", "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"]
+    scope=[
+        "openid",
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.profile"
+    ]
 )
 app.register_blueprint(google_bp, url_prefix="/login")
 
@@ -26,7 +30,8 @@ def login():
 def test_step(step):
     if not google.authorized:
         return redirect(url_for("login"))
-    if 1 <= step <= 4:
+    # Admit steps 1-5
+    if 1 <= step <= 5:
         return render_template(f"step{step}.html", current_step=step)
     return redirect(url_for("chat"))
 
