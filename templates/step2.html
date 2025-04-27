@@ -3,10 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paso {{ current_step }} – Orientación sexual</title>
+  <title>Paso 2 – Orientación sexual</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body style="background: url('{{ url_for('static', filename='images/bg2.jpg') }}') no-repeat center center; background-size: cover;">
+<body style="
+    background: url('{{ url_for('static', filename='images/bg2.jpg') }}') no-repeat center center;
+    background-size: cover;
+    position: relative;
+">
+  <!-- Logo fijo en esquina -->
+  <div class="logo-container" style="position: absolute; top: 1rem; left: 1rem;">
+    <img src="{{ url_for('static', filename='assets/logo_white.png') }}"
+         alt="Dr. Erosi Logo"
+         style="width: 60px; height: auto;">
+  </div>
+
   <!-- Barra de progreso al 50% -->
   <div class="progress-container">
     <div class="progress-bar" style="width: 50%;"></div>
