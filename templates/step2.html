@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Paso 2 – Orientación</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paso 2 – Test Erosi</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <style>
-    body { font-family: 'Quicksand', sans-serif; background: #fafafa; margin: 0; padding: 20px; color: #222; }
-    h2 { text-align: center; }
-    .options { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
-    .option { cursor: pointer; border: 2px solid transparent; border-radius: 12px; padding: 10px; transition: 0.3s; width: 140px; text-align: center; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .option:hover { border-color: #d500a0; }
-    .option img { width: 100px; height: 100px; }
-    input[type="radio"] { display: none; }
-  </style>
 </head>
-<body>
-<div class="progress-container">
-  <div class="progress-bar" style="width: 50%;"></div>
-</div>
-
-
-<script>
-  // Toggle nav
-  document.addEventListener('click', function(e){
-    if(!e.target.matches('.menu-btn')) {
-      document.querySelector('nav').classList.remove('show');
-    }
-  });
-</script>
-
-
-<footer>
-  By continuing, you agree to:
-  <a href="#">Terms of Use</a> |
-  <a href="#">Privacy Policy</a>
-  2025 © All rights reserved.
-</footer>
-
-  <script src="{{ url_for('static', filename='js/progress.js') }}"></script>
+<body style="background: url('{{ url_for('static', filename='images/bg2.jpg') }}') no-repeat center center; background-size: cover;">
+  <div class="progress-container">
+    <div class="progress-bar" style="width: 50.0%;"></div>
+  </div>
+  <div class="content">
+    <h2>Paso 2: Tu Pregunta Aquí</h2>
+    <div class="options">
+      <!-- Ejemplo de opciones, reemplaza src y labels -->
+      <div class="option" onclick="location.href='/test/3'">
+        <img src="{{ url_for('static', filename='images/bg2.jpg') }}" alt="Opción 1">
+      </div>
+      <div class="option" onclick="location.href='/test/3'">
+        <img src="{{ url_for('static', filename='images/bg2.jpg') }}" alt="Opción 2">
+      </div>
+    </div>
+  </div>
 </body>
 </html>
