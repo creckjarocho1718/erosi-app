@@ -347,16 +347,46 @@ header nav a:hover {
 .progress-bar {
   height: 8px;
   background: #4caf50;
-  width: VAR_WIDTH%;
+  width: 0%;
   transition: width 0.3s ease;
 }
 
-/* Responsive adjustments */
+/* Responsive test page */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: 'Quicksand', sans-serif;
+  background: #fafafa;
+  color: #222;
+}
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.option {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: border-color 0.3s;
+}
+.option:hover {
+  border-color: #d500a0;
+}
+.option img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Adjustments for mobile */
 @media (max-width: 600px) {
-  .edad-icons label img {
+  .option img {
     width: 60px;
-  }
-  .avatar {
-    width: 100px;
+    height: 60px;
   }
 }
