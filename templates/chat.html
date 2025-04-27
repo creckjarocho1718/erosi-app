@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat – Erosi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat de Erosi</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <h1>Chat de Erosi</h1>
-  <p>Bienvenido {{ session.get('user') }}</p>
+  <!-- Logout link -->
+  <a href="{{ url_for('logout') }}" 
+     style="position:absolute; top:1rem; right:1rem; color:#fff; text-decoration:none;">
+    Cerrar sesión
+  </a>
+  <div class="content">
+    <h1>Chat de Erosi</h1>
+    <p>Bienvenido {{ session.get('user') }}</p>
+  </div>
 </body>
 </html>
