@@ -20,17 +20,19 @@ app.register_blueprint(google_bp, url_prefix="/login")
 def home():
     if not google.authorized:
         return redirect(url_for("login"))
-    return redirect(url_for("test"))
+    return redirect(url_for("test_step", step=1))
 
 @app.route("/login")
 def login():
     return render_template("login.html")
 
-@app.route("/test")
-def test():
+@app.route("/test/<int:step>")
+def test_step(step):
     if not google.authorized:
         return redirect(url_for("login"))
-    return render_template("step1.html")
+    if 1 <= step <= 4:
+        return render_template(f"step{step}.html")
+    return redirect(url_for("chat"))
 
 @app.route("/chat")
 def chat():
