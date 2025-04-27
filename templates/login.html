@@ -1,21 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecstasy - Cum play with us</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="background">
         <div class="overlay"></div>
         <div class="content animated">
-            <img src="{{ url_for('static', filename='assets/logo_white.png') }}" alt="Ecstasy Logo" class="logo pulse">
+            <img src="assets/logo_white.png" alt="Ecstasy Logo" class="logo pulse">
             <h1>Bienvenido a Ecstasy</h1>
             <p>Educación sexual como nunca la habías vivido</p>
-            <a href="{{ url_for('google.login') }}" class="google-btn zoom-hover">
-                <img src="{{ url_for('static', filename='assets/google_g.png') }}" alt="Google Icon"> Iniciar sesión con Google
-            </a>
+            <button class="google-btn zoom-hover">
+                <img src="assets/google_g.png" alt="Google Icon"> Iniciar sesión con Google
+            </button>
         </div>
     </div>
 </body>

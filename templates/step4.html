@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Paso 4 – ¿Qué estás buscando?</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body { font-family: 'Quicksand', sans-serif; background: #fafafa; margin: 0; padding: 20px; color: #222; }
+    h2 { text-align: center; }
+    .options { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
+    .option { cursor: pointer; border: 2px solid transparent; border-radius: 12px; padding: 20px; transition: 0.3s; width: 180px; text-align: center; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .option:hover { border-color: #d500a0; }
+    .option div { font-size: 1rem; }
+    input[type="radio"] { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="hamburger" onclick="toggleSidebar()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <div class="logo-center">
+    <img src="/static/img/logo_white.png" alt="Ecstasy Logo" />
+  </div>
+  <ul class="nav-links">
+    <li><a href="#"><span>🗣️</span> Chat</a></li>
+    <li><a href="#"><span>🧠</span> Test</a></li>
+    <li><a href="#"><span>🛒</span> Tienda</a></li>
+    <li><a href="#"><span>📋</span> Plan</a></li>
+    <li><a href="#"><span>⚙️</span> Configuración</a></li>
+  </ul>
+</div>
+
+
+<div class="logo-animado">
+    <img src="/static/img/logo_white.png" alt="Ecstasy Logo" />
+</div>
+
+
+
+
+
+<header>
+  <button class="menu-btn" onclick="document.querySelector('nav').classList.toggle('show')">☰</button>
+  <nav>
+    <a href="#">Terms of Use</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Need Help?</a>
+  </nav>
+</header>
+
+
+
+<div class="progress-container"><div class="progress-bar" data-percent="100"></div></div></div>
+</div>
+</div>
+
+
+</div>
+  </div>
+  <h2>¿Qué estás buscando?</h2>
+  <form method="POST" action="/start_chat">
+    <div class="options">
+      <label class="option">
+        <input type="radio" name="interes" value="consejos" required>
+        <div><b>Consejos sexuales</b></div>
+      </label>
+      <label class="option">
+        <input type="radio" name="interes" value="problemas" >
+        <div><b>Resolver problemas</b></div>
+      </label>
+      <label class="option">
+        <input type="radio" name="interes" value="juguetes" >
+        <div><b>Explorar juguetes</b></div>
+      </label>
+      <label class="option">
+        <input type="radio" name="interes" value="pareja" >
+        <div><b>Mejorar relación de pareja</b></div>
+      </label>
+</div>
+  </form>
+  <script src="{{ url_for('static', filename='autosubmit.js') }}"></script>
+
+
+<script>
+  // Toggle nav
+  document.addEventListener('click', function(e){
+    if(!e.target.matches('.menu-btn')) {
+      document.querySelector('nav').classList.remove('show');
+    }
+  });
+</script>
+
+
+<footer>
+  By continuing, you agree to:
+  <a href="#">Terms of Use</a> |
+  <a href="#">Privacy Policy</a>
+  2025 © All rights reserved.
+</footer>
+
+  <script src="{{ url_for('static', filename='js/progress.js') }}"></script>
+</body>
+</html>

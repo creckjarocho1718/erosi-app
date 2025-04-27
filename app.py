@@ -5,6 +5,7 @@ import os
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "cambia_esto_por_una_clave_segura")
 
+# Google OAuth setup
 google_bp = make_google_blueprint(
     client_id=os.environ.get("GOOGLE_OAUTH_CLIENT_ID"),
     client_secret=os.environ.get("GOOGLE_OAUTH_CLIENT_SECRET"),
@@ -17,10 +18,6 @@ app.register_blueprint(google_bp, url_prefix="/login")
 def home():
     if not google.authorized:
         return redirect(url_for("login"))
-    resp = google.get("/oauth2/v2/userinfo")
-    if not resp.ok:
-        return redirect(url_for("login"))
-    session["user"] = resp.json().get("email")
     return redirect(url_for("test"))
 
 @app.route("/login")
@@ -29,13 +26,14 @@ def login():
 
 @app.route("/test")
 def test():
-    if "user" not in session:
+    if not google.authorized:
         return redirect(url_for("login"))
-    return render_template("test.html")
+    # Start at step1 of the test
+    return render_template("step1.html")
 
 @app.route("/chat")
 def chat():
-    if "user" not in session:
+    if not google.authorized:
         return redirect(url_for("login"))
     return render_template("chat.html")
 
