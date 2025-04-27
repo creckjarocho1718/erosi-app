@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paso 1 – Selección de género</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paso 1 – Selección de género</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body style="background: url('{{ url_for('static', filename='images/bg1.jpg') }}') center/cover no-repeat; position: relative;">
+<body style="background: url('{{ url_for('static', filename='images/bg1.jpg') }}') no-repeat center center; background-size: cover; position: relative;">
   <div class="logo-container" style="position:absolute;top:1rem;left:1rem;">
     <img src="{{ url_for('static', filename='assets/logo_white.png') }}" alt="Logo" style="width:60px;">
   </div>
