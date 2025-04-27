@@ -336,3 +336,27 @@ header nav a:hover {
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
+
+/* Progress bar styles */
+.progress-container {
+  width: 100%;
+  background: #ddd;
+  height: 8px;
+  margin-bottom: 1rem;
+}
+.progress-bar {
+  height: 8px;
+  background: #4caf50;
+  width: VAR_WIDTH%;
+  transition: width 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .edad-icons label img {
+    width: 60px;
+  }
+  .avatar {
+    width: 100px;
+  }
+}

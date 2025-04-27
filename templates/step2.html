@@ -15,6 +15,10 @@
   </style>
 </head>
 <body>
+<div class="progress-container">
+  <div class="progress-bar" style="width: 50%;"></div>
+</div>
+
 
 <div class="hamburger" onclick="toggleSidebar()">
   <span></span>
@@ -113,5 +117,10 @@
 </footer>
 
   <script src="{{ url_for('static', filename='js/progress.js') }}"></script>
+
+<div style="text-align:center; margin-top:1rem;">
+  <button id="nextBtn" onclick="location.href='{{ url_for('test_step', step=3) }}'">Siguiente</button>
+</div>
+
 </body>
 </html>
