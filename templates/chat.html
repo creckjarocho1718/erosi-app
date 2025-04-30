@@ -1,30 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chat de Dr. Erosi</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}" />
-</head>
-<body>
-  <header class="chat-header">
-    <img src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}"
-         alt="Ecstasy Logo" class="app-logo" />
-    <h1>Chat con Dr. Erosi</h1>
-  </header>
-
-  <div class="avatar-container">
-    <img id="erosi-avatar" src="{{ url_for('static', filename='assets/' + avatar_file) }}"
-         alt="Dr. Erosi" />
-  </div>
-
-  <div id="chat-window" class="chat-window"></div>
-
-  <form id="chat-form" class="chat-form">
-    <input id="user-input" type="text" placeholder="Escribe tu mensaje…" autocomplete="off" />
-    <button type="submit">Enviar</button>
-  </form>
-
-  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
-</body>
-</html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat</title></head><body>
+<p>avatar_video: {{ avatar_video }}</p>
+<video autoplay loop muted playsinline width="120" height="120">
+  <source src="{{ url_for('static', filename='assets/' + avatar_video) }}" type="video/webm">
+</video>
+</body></html>
