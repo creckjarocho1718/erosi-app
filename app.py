@@ -45,8 +45,14 @@ def chat():
     if not google.authorized:
         return redirect(url_for("login"))
     choice = session.get('avatar_choice', 'male')
-    video = f"avatar_{choice}_loop.webm"
-    return render_template("chat.html", avatar_video=video)
+    # Map choice to filename
+    avatar_map = {
+        'male': 'avatar_male_loop.webm',
+        'female': 'avatar_female_loop.webm',
+        'other': 'avatar_andro_loop.webm'
+    }
+    avatar_video = avatar_map.get(choice, 'avatar_male_loop.webm')
+    return render_template("chat.html", avatar_video=avatar_video)
 
 @app.route("/api/message", methods=["POST"])
 def api_message():
