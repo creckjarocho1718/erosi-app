@@ -7,38 +7,37 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
 </head>
 <body>
+  <!-- Para debug: confirma en consola qué avatar_video llega -->
+  <script>console.log("DEBUG avatar_video:", {{ avatar_video|tojson }});</script>
+
   <header class="chat-header">
-    <img
-      src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}"
-      alt="Logo Ecstasy"
-      class="app-logo"
-    >
+    <img src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}" alt="Logo" class="app-logo">
     <h1>Dr. Erosi</h1>
   </header>
 
-  <div class="avatar-container">
+  <div class="avatar-container" style="border:2px dashed red;">
     {% if avatar_video %}
       <video
         id="erosi-avatar"
         src="{{ url_for('static', filename='assets/' + avatar_video) }}"
         autoplay loop muted playsinline
+        width="150" height="150"
       ></video>
+      <!-- Fallback si falla el vídeo -->
+      <img
+        src="{{ url_for('static', filename='assets/avatar_default.png') }}"
+        alt="Avatar por defecto"
+        style="display:block; margin:auto; width:150px; height:150px;"
+      >
     {% else %}
-      <p style="color:red; text-align:center;">
-        ERROR: No se ha definido ningún avatar.
-      </p>
+      <p style="color:red; text-align:center;">ERROR: No se definió avatar_video</p>
     {% endif %}
   </div>
 
   <div id="chat-window" class="chat-window"></div>
 
   <form id="chat-form" class="chat-form">
-    <input
-      id="user-input"
-      type="text"
-      placeholder="Escribe tu mensaje…"
-      autocomplete="off"
-    />
+    <input id="user-input" type="text" placeholder="Escribe tu mensaje…" autocomplete="off">
     <button type="submit">Enviar</button>
   </form>
 
