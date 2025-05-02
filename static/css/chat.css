@@ -1,1 +1,98 @@
-/* minimal css */
+/* chat.css */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Header with logo */
+.chat-header {
+  display: flex;
+  align-items: center;
+  background: #e91e63;
+  padding: 0.5rem 1rem;
+}
+.chat-header .app-logo {
+  width: 40px;
+  margin-right: 1rem;
+}
+.chat-header h1 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.avatar-container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  background: #000;
+  padding: 1rem 0;
+}
+.avatar-container img {
+  width: 100px;
+  border-radius: 50%;
+  animation: idle 1s infinite;
+}
+
+/* Animación */
+@keyframes speaking {
+  0%, 100% { transform: scaleY(1); }
+  50%      { transform: scaleY(0.85); }
+}
+@keyframes idle {
+  0%, 100% { transform: scaleY(1); }
+  50%      { transform: scaleY(0.98); }
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.message {
+  max-width: 80%;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  line-height: 1.4;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #4caf50;
+  color: #fff;
+}
+
+.message.erosi {
+  align-self: flex-start;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.chat-form {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-form input {
+  flex: 1;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.chat-form button {
+  border: none;
+  background: #e91e63;
+  color: #fff;
+  padding: 0 1.5rem;
+  cursor: pointer;
+}
