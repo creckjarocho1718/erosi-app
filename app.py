@@ -53,6 +53,10 @@ def chat():
     avatar_video = avatar_map.get(choice, 'avatar_male_loop.webm')
     return render_template("chat.html", avatar_video=avatar_video)
 
+@app.route("/test_video")
+def test_video():
+    return render_template("test_video.html")
+
 @app.route("/api/message", methods=["POST"])
 def api_message():
     data = request.get_json()
@@ -60,8 +64,8 @@ def api_message():
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are Dr. Erosi, professional yet playful sexual education AI."},
-            {"role": "user", "content": user_msg}
+            {"role":"system","content":"You are Dr. Erosi, professional yet playful sexual education AI."},
+            {"role":"user","content":user_msg}
         ]
     )
     reply = response.choices[0].message.content
