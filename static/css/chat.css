@@ -1,16 +1,6 @@
 /* Animaciones para avatar */
-@keyframes idle {
-  0%,100% { transform: scaleY(1); }
-  50%     { transform: scaleY(0.98); }
-}
-@keyframes speaking {
-  0%,100% { transform: scaleY(1); }
-  50%     { transform: scaleY(0.85); }
-}
+@keyframes idle { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.98); } }
+@keyframes speaking { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.85); } }
 
-#erosi-avatar.idle {
-  animation: idle 2s infinite;
-}
-#erosi-avatar.speaking {
-  animation: speaking 0.3s infinite;
-}
+#erosi-avatar.idle { animation: idle 2s infinite; }
+#erosi-avatar.speaking { animation: speaking 0.3s infinite; }
