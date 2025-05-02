@@ -14,6 +14,11 @@
   </header>
 
   <div class="avatar-container">
+    <!-- Debug: imprime el valor de avatar_video -->
+    <pre style="color: red; text-align: center;">
+      DEBUG avatar_video = {{ avatar_video }}
+    </pre>
+
     {% if avatar_video %}
       <video id="erosi-avatar"
              poster="{{ url_for('static', filename='assets/' + avatar_img) }}"
