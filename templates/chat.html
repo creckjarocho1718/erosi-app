@@ -8,33 +8,28 @@
 </head>
 <body>
   <header class="chat-header">
-    <img src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}" alt="Logo" class="app-logo">
-    <h1>Dr. Erosi</h1>
+    <img src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}" alt="Logo Ecstasy" class="app-logo">
+    <h1>Chat con Dr. Erosi</h1>
   </header>
 
-  <div class="avatar-container" style="border:2px solid blue;">
+  <div class="avatar-container">
     {% if avatar_video %}
-      <video
-        id="erosi-avatar"
-        src="{{ url_for('static', filename='assets/' + avatar_video) }}"
-        autoplay loop muted playsinline
-        width="150" height="150"
-      ></video>
+      <video id="erosi-avatar"
+             poster="{{ url_for('static', filename='assets/' + avatar_img) }}"
+             autoplay loop muted playsinline width="150" height="150">
+        <source src="{{ url_for('static', filename='assets/' + avatar_video) }}" type="video/webm">
+        Tu navegador no soporta vídeo.
+      </video>
     {% else %}
-      <p style="color:red; text-align:center;">ERROR: No avatar_video definido</p>
+      <p style="color:red; text-align:center;">ERROR: No avatar definido</p>
     {% endif %}
   </div>
 
   <div id="chat-window" class="chat-window"></div>
-
   <form id="chat-form" class="chat-form">
-    <input id="user-input" type="text" placeholder="Escribe tu mensaje…" autocomplete="off"/>
+    <input id="user-input" type="text" placeholder="Escribe…" autocomplete="off" />
     <button type="submit">Enviar</button>
   </form>
-
-  <script>
-    console.log("SCRIPT DEBUG: chat.html loaded, avatar_video={{ avatar_video }}");
-  </script>
   <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 </body>
 </html>
