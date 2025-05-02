@@ -5,47 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat de Dr. Erosi</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
-  <style>
-    /* Debug: show avatar-container boundaries */
-    .avatar-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 2px dashed #f00;
-      padding: 1rem;
-      min-height: 150px;
-    }
-    .avatar-container video {
-      display: block;
-    }
-  </style>
 </head>
 <body>
   <header class="chat-header">
-    <img src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}" alt="Logo" class="app-logo">
+    <img
+      src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}"
+      alt="Logo Ecstasy"
+      class="app-logo"
+    >
     <h1>Chat con Dr. Erosi</h1>
   </header>
-
   <div class="avatar-container">
     {% if avatar_video %}
-      <video id="erosi-avatar"
-             src="{{ url_for('static', filename='assets/' + avatar_video) }}"
-             autoplay loop muted playsinline
-             width="120" height="120"
-      >Tu navegador no soporta el vídeo.</video>
+      <video
+        id="erosi-avatar"
+        autoplay
+        loop
+        muted
+        playsinline
+        width="150"
+        height="150"
+        src="{{ url_for('static', filename='assets/' + avatar_video) }}"
+      ></video>
     {% else %}
-      <p style="color:red; text-align:center;">ERROR: avatar_video no definido</p>
+      <p style="color:red; text-align:center;">
+        ERROR: No se ha definido ningún avatar.
+      </p>
     {% endif %}
   </div>
-
   <div id="chat-window" class="chat-window"></div>
-
   <form id="chat-form" class="chat-form">
-    <input id="user-input" type="text" placeholder="Escribe tu mensaje…" autocomplete="off">
+    <input
+      id="user-input"
+      type="text"
+      placeholder="Escribe tu mensaje…"
+      autocomplete="off"
+    />
     <button type="submit">Enviar</button>
   </form>
-
-  <script>console.log("avatar_video:", "{{ avatar_video }}");</script>
   <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 </body>
 </html>

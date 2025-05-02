@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, session, request, jsonify, send_file
 from flask_dance.contrib.google import make_google_blueprint, google
-import os, openai, io, traceback
+import os, openai, io
 from gtts import gTTS
 
 app = Flask(__name__)
@@ -14,16 +14,10 @@ google_bp = make_google_blueprint(
 )
 app.register_blueprint(google_bp, url_prefix="/login")
 
-@app.errorhandler(Exception)
-def handle_exception(e):
-    # Return full traceback in response for debugging
-    return "<h1>Internal Error</h1><pre>" + traceback.format_exc() + "</pre>", 500
-
 @app.route("/")
 def home():
-    # Skip auth for debugging
-    # if not google.authorized:
-    #     return redirect(url_for("login"))
+    if not google.authorized:
+        return redirect(url_for("google.login"))
     return redirect(url_for("test_step", step=1))
 
 @app.route("/login")
@@ -32,9 +26,8 @@ def login():
 
 @app.route("/test/<int:step>")
 def test_step(step):
-    # Skip auth for debugging
-    # if not google.authorized:
-    #     return redirect(url_for("login"))
+    if not google.authorized:
+        return redirect(url_for("google.login"))
     if 1 <= step <= 4:
         return render_template(f"step{step}.html", current_step=step)
     if step == 5:
@@ -43,14 +36,14 @@ def test_step(step):
 
 @app.route("/set_avatar/<choice>")
 def set_avatar(choice):
-    session['avatar_choice'] = choice
+    if choice in ['male', 'female', 'other']:
+        session['avatar_choice'] = choice
     return redirect(url_for("chat"))
 
 @app.route("/chat")
 def chat():
-    # Skip auth for debugging
-    # if not google.authorized:
-    #     return redirect(url_for("login"))
+    if not google.authorized:
+        return redirect(url_for("google.login"))
     choice = session.get('avatar_choice', 'male')
     avatar_map = {
         'male': 'avatar_male_loop.webm',
