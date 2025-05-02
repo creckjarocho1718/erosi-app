@@ -1,107 +1,15 @@
-/* Chat principal: full viewport */
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #fafafa;
-  font-family: 'Quicksand', sans-serif;
+@keyframes idle {
+  0%,100% { transform: scaleY(1); }
+  50%     { transform: scaleY(0.98); }
+}
+@keyframes speaking {
+  0%,100% { transform: scaleY(1); }
+  50%     { transform: scaleY(0.85); }
 }
 
-/* Header: logo + título */
-.chat-header {
-  display: flex;
-  align-items: center;
-  background: #e91e63;
-  padding: 0.75rem 1rem;
+#erosi-avatar.idle {
+  animation: idle 2s infinite;
 }
-.chat-header .app-logo {
-  width: 40px;
-  margin-right: 0.75rem;
-}
-.chat-header h1 {
-  color: #fff;
-  font-size: 1.25rem;
-  margin: 0;
-}
-
-/* Avatar centrado */
-.avatar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-}
-.avatar-container video {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Ventana de chat */
-.chat-window {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  background: #f5f5f5;
-}
-
-/* Burbuja de mensaje */
-.message {
-  max-width: 70%;
-  padding: 0.6rem 1rem;
-  border-radius: 1rem;
-  line-height: 1.4;
-  word-wrap: break-word;
-}
-.message.user {
-  align-self: flex-end;
-  background: #4caf50;
-  color: #fff;
-  border-bottom-right-radius: 0.25rem;
-}
-.message.erosi {
-  align-self: flex-start;
-  background: #fff;
-  color: #222;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  border-bottom-left-radius: 0.25rem;
-}
-
-/* Formulario de entrada */
-.chat-form {
-  display: flex;
-  border-top: 1px solid #ddd;
-  background: #fff;
-}
-.chat-form input {
-  flex: 1;
-  border: none;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  outline: none;
-}
-.chat-form button {
-  border: none;
-  background: #e91e63;
-  color: #fff;
-  padding: 0 1.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-/* Scrollbar custom opcional */
-.chat-window::-webkit-scrollbar {
-  width: 6px;
-}
-.chat-window::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.2);
-  border-radius: 3px;
+#erosi-avatar.speaking {
+  animation: speaking 0.3s infinite;
 }
