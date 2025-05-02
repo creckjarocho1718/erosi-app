@@ -13,19 +13,15 @@
       alt="Logo Ecstasy"
       class="app-logo"
     >
-    <h1>Chat con Dr. Erosi</h1>
+    <h1>Dr. Erosi</h1>
   </header>
+
   <div class="avatar-container">
     {% if avatar_video %}
       <video
         id="erosi-avatar"
-        autoplay
-        loop
-        muted
-        playsinline
-        width="150"
-        height="150"
         src="{{ url_for('static', filename='assets/' + avatar_video) }}"
+        autoplay loop muted playsinline
       ></video>
     {% else %}
       <p style="color:red; text-align:center;">
@@ -33,7 +29,9 @@
       </p>
     {% endif %}
   </div>
+
   <div id="chat-window" class="chat-window"></div>
+
   <form id="chat-form" class="chat-form">
     <input
       id="user-input"
@@ -43,6 +41,7 @@
     />
     <button type="submit">Enviar</button>
   </form>
+
   <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 </body>
 </html>

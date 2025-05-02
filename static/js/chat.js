@@ -1,4 +1,3 @@
-// chat.js
 window.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('chat-form');
   const input = document.getElementById('user-input');
@@ -20,15 +19,21 @@ window.addEventListener('DOMContentLoaded', () => {
     appendMessage(userText, 'user');
     input.value = '';
 
-    // Simula que Dr. Erosi "habla":
     avatar.style.animationName = 'speaking';
 
-    // Simula retraso de respuesta
-    setTimeout(() => {
-      // Aquí llamarías a tu backend para obtener la respuesta real
-      const erosiText = '¡Entiendo! Cuéntame más sobre eso…';
-      appendMessage(erosiText, 'erosi');
-      avatar.style.animationName = 'idle';
-    }, 1000);
+    const res = await fetch('/api/message', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({message: userText})
+    });
+    const data = await res.json();
+    appendMessage(data.reply, 'erosi');
+
+    const audioRes = await fetch('/api/tts?text=' + encodeURIComponent(data.reply));
+    const audioBlob = await audioRes.blob();
+    const audioUrl = URL.createObjectURL(audioBlob);
+    const audio = new Audio(audioUrl);
+    audio.play();
+    audio.onended = () => avatar.style.animationName = 'idle';
   });
 });
