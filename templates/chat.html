@@ -9,17 +9,21 @@
 <body>
   <header class="chat-header">
     <img src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}" alt="Logo" class="app-logo">
-    <h1>Dr. Erosi</h1>
+    <h1>Chat con Dr. Erosi</h1>
     <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
   </header>
 
   <div class="avatar-container">
-    <!-- Debug: imprime el valor de avatar_video -->
-    <pre style="color: red; text-align: center;">
-      DEBUG avatar_video = {{ avatar_video }}
+    <!-- Debug: print avatar variables -->
+    <pre style="color: red; text-align:center;">
+      avatar_video={{ avatar_video }} | avatar_img={{ avatar_img }}
     </pre>
 
     {% if avatar_video %}
+      <!-- Img fallback -->
+      <img src="{{ url_for('static', filename='assets/' + avatar_img) }}" 
+           alt="Avatar Image" width="150" height="150" style="border:1px solid green;">
+      <!-- Video player -->
       <video id="erosi-avatar"
              poster="{{ url_for('static', filename='assets/' + avatar_img) }}"
              autoplay loop muted playsinline width="150" height="150">
@@ -27,7 +31,7 @@
         Tu navegador no soporta vídeo.
       </video>
     {% else %}
-      <p class="error">No avatar definido.</p>
+      <p class="error" style="color: red; text-align:center;">No avatar definido.</p>
     {% endif %}
   </div>
 
