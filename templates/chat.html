@@ -14,14 +14,22 @@
   </header>
 
   <div class="avatar-container">
+    <!-- DEBUG -->
+    <pre style="color:red; text-align:center;">
+      avatar_video={{ avatar_video }} | avatar_img={{ avatar_img }}
+    </pre>
+
+    <!-- Fallback image -->
     <img id="erosi-img"
          src="{{ url_for('static', filename='assets/' + avatar_img) }}"
          alt="Avatar" width="150" height="150">
+
+    <!-- Direct video src -->
     <video id="erosi-avatar"
+           src="{{ url_for('static', filename='assets/' + avatar_video) }}"
            poster="{{ url_for('static', filename='assets/' + avatar_img) }}"
            width="150" height="150"
            autoplay loop muted playsinline style="display:none;">
-      <source src="{{ url_for('static', filename='assets/' + avatar_video) }}" type="video/webm">
       Tu navegador no soporta vídeo.
     </video>
   </div>
