@@ -5,18 +5,16 @@ window.addEventListener('DOMContentLoaded', () => {
   const avatarVideo = document.getElementById('erosi-avatar');
   const avatarImg = document.getElementById('erosi-img');
 
-  // Initially show image, hide video
+  // Show image first
   avatarImg.style.display = 'block';
   avatarVideo.style.display = 'none';
 
-  // When video can play, show video and hide image
   avatarVideo.addEventListener('canplay', () => {
     avatarImg.style.display = 'none';
     avatarVideo.style.display = 'block';
     avatarVideo.classList.add('idle');
   });
 
-  // On error, keep image
   avatarVideo.onerror = () => {
     avatarVideo.style.display = 'none';
     avatarImg.style.display = 'block';
@@ -33,19 +31,18 @@ window.addEventListener('DOMContentLoaded', () => {
   async function sendMessage(userText) {
     appendMessage(userText, 'user');
     input.value = '';
-    // Trigger speaking animation on video or do nothing on image
     if (avatarVideo.style.display !== 'none') {
       avatarVideo.classList.replace('idle', 'speaking');
     }
 
     try {
-      const res = await fetch('/api/message',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
+      const res = await fetch('/api/message', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
         body: JSON.stringify({message:userText})
       });
       const data = await res.json();
-      appendMessage(data.reply,'erosi');
+      appendMessage(data.reply, 'erosi');
 
       const ttsRes = await fetch('/api/tts?text=' + encodeURIComponent(data.reply));
       const blob = await ttsRes.blob();
@@ -57,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
           avatarVideo.classList.replace('speaking', 'idle');
         }
       };
-    } catch(err){
+    } catch (err) {
       console.error(err);
       if (avatarVideo.style.display !== 'none') {
         avatarVideo.classList.replace('speaking', 'idle');
@@ -68,9 +65,6 @@ window.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', e => {
     e.preventDefault();
     const text = input.value.trim();
-    if (!text) return;
-    sendMessage(text);
+    if (text) sendMessage(text);
   });
 });
-
-/* Note: Ensure CSS defines .idle and .speaking animations */
