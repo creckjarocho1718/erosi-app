@@ -3,7 +3,15 @@ window.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('user-input');
   const chatWin = document.getElementById('chat-window');
   const avatar = document.getElementById('erosi-avatar');
+  const img = document.getElementById('erosi-img');
   avatar.classList.add('idle');
+
+  // On video error, hide video, show img
+  avatar.onerror = () => {
+    console.warn("Video error, showing fallback image");
+    avatar.style.display = 'none';
+    img.style.display = 'block';
+  };
 
   function appendMessage(text, sender) {
     const div = document.createElement('div');
@@ -44,4 +52,4 @@ window.addEventListener('DOMContentLoaded', () => {
     if(!text) return;
     sendMessage(text);
   });
-}/* end chat.js */
+});

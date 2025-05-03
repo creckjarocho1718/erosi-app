@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat de Dr. Erosi</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+  <style>
+    /* ensure fallback image hidden by default */
+    #erosi-img { display: none; border: 2px solid green; border-radius: 50%; }
+  </style>
 </head>
 <body>
   <header class="chat-header">
@@ -14,20 +18,21 @@
   </header>
 
   <div class="avatar-container">
-    <!-- Debug: print avatar variables -->
-    <pre style="color: red; text-align:center;">
-      avatar_video={{ avatar_video }} | avatar_img={{ avatar_img }}
+    <!-- Debug: avatar_video and avatar_img -->
+    <pre style="color: red; text-align: center;">
+      DEBUG avatar_video={{ avatar_video }} | avatar_img={{ avatar_img }}
     </pre>
 
     {% if avatar_video %}
-      <!-- Img fallback -->
-      <img src="{{ url_for('static', filename='assets/' + avatar_img) }}" 
-           alt="Avatar Image" width="150" height="150" style="border:1px solid green;">
+      <!-- Fallback img -->
+      <img id="erosi-img"
+           src="{{ url_for('static', filename='assets/' + avatar_img) }}"
+           alt="Avatar Image" width="150" height="150">
       <!-- Video player -->
       <video id="erosi-avatar"
              poster="{{ url_for('static', filename='assets/' + avatar_img) }}"
+             src="{{ url_for('static', filename='assets/' + avatar_video) }}"
              autoplay loop muted playsinline width="150" height="150">
-        <source src="{{ url_for('static', filename='assets/' + avatar_video) }}" type="video/webm">
         Tu navegador no soporta vídeo.
       </video>
     {% else %}
