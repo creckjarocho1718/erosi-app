@@ -2,15 +2,24 @@ window.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('chat-form');
   const input = document.getElementById('user-input');
   const chatWin = document.getElementById('chat-window');
-  const avatar = document.getElementById('erosi-avatar');
-  const img = document.getElementById('erosi-img');
-  avatar.classList.add('idle');
+  const avatarVideo = document.getElementById('erosi-avatar');
+  const avatarImg = document.getElementById('erosi-img');
 
-  // On video error, hide video, show img
-  avatar.onerror = () => {
-    console.warn("Video error, showing fallback image");
-    avatar.style.display = 'none';
-    img.style.display = 'block';
+  // Initially show image, hide video
+  avatarImg.style.display = 'block';
+  avatarVideo.style.display = 'none';
+
+  // When video can play, show video and hide image
+  avatarVideo.addEventListener('canplay', () => {
+    avatarImg.style.display = 'none';
+    avatarVideo.style.display = 'block';
+    avatarVideo.classList.add('idle');
+  });
+
+  // On error, keep image
+  avatarVideo.onerror = () => {
+    avatarVideo.style.display = 'none';
+    avatarImg.style.display = 'block';
   };
 
   function appendMessage(text, sender) {
@@ -24,32 +33,44 @@ window.addEventListener('DOMContentLoaded', () => {
   async function sendMessage(userText) {
     appendMessage(userText, 'user');
     input.value = '';
-    avatar.classList.replace('idle','speaking');
+    // Trigger speaking animation on video or do nothing on image
+    if (avatarVideo.style.display !== 'none') {
+      avatarVideo.classList.replace('idle', 'speaking');
+    }
 
     try {
       const res = await fetch('/api/message',{
-        method:'POST', headers:{'Content-Type':'application/json'},
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
         body: JSON.stringify({message:userText})
       });
       const data = await res.json();
       appendMessage(data.reply,'erosi');
 
-      const ttsRes = await fetch('/api/tts?text='+encodeURIComponent(data.reply));
+      const ttsRes = await fetch('/api/tts?text=' + encodeURIComponent(data.reply));
       const blob = await ttsRes.blob();
       const url = URL.createObjectURL(blob);
       const audio = new Audio(url);
       audio.play();
-      audio.onended = ()=> avatar.classList.replace('speaking','idle');
+      audio.onended = () => {
+        if (avatarVideo.style.display !== 'none') {
+          avatarVideo.classList.replace('speaking', 'idle');
+        }
+      };
     } catch(err){
       console.error(err);
-      avatar.classList.replace('speaking','idle');
+      if (avatarVideo.style.display !== 'none') {
+        avatarVideo.classList.replace('speaking', 'idle');
+      }
     }
   }
 
   form.addEventListener('submit', e => {
     e.preventDefault();
     const text = input.value.trim();
-    if(!text) return;
+    if (!text) return;
     sendMessage(text);
   });
 });
+
+/* Note: Ensure CSS defines .idle and .speaking animations */
