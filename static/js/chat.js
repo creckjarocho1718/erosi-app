@@ -1,70 +1,18 @@
-window.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('chat-form');
-  const input = document.getElementById('user-input');
-  const chatWin = document.getElementById('chat-window');
-  const avatarVideo = document.getElementById('erosi-avatar');
-  const avatarImg = document.getElementById('erosi-img');
-
-  // Show image first
-  avatarImg.style.display = 'block';
-  avatarVideo.style.display = 'none';
-
-  avatarVideo.addEventListener('canplay', () => {
-    avatarImg.style.display = 'none';
-    avatarVideo.style.display = 'block';
-    avatarVideo.classList.add('idle');
-  });
-
-  avatarVideo.onerror = () => {
-    avatarVideo.style.display = 'none';
-    avatarImg.style.display = 'block';
-  };
-
-  function appendMessage(text, sender) {
-    const div = document.createElement('div');
-    div.classList.add('message', sender);
-    div.textContent = text;
-    chatWin.appendChild(div);
-    chatWin.scrollTop = chatWin.scrollHeight;
-  }
-
-  async function sendMessage(userText) {
-    appendMessage(userText, 'user');
-    input.value = '';
-    if (avatarVideo.style.display !== 'none') {
-      avatarVideo.classList.replace('idle', 'speaking');
-    }
-
-    try {
-      const res = await fetch('/api/message', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({message:userText})
-      });
-      const data = await res.json();
-      appendMessage(data.reply, 'erosi');
-
-      const ttsRes = await fetch('/api/tts?text=' + encodeURIComponent(data.reply));
-      const blob = await ttsRes.blob();
-      const url = URL.createObjectURL(blob);
-      const audio = new Audio(url);
-      audio.play();
-      audio.onended = () => {
-        if (avatarVideo.style.display !== 'none') {
-          avatarVideo.classList.replace('speaking', 'idle');
-        }
-      };
-    } catch (err) {
-      console.error(err);
-      if (avatarVideo.style.display !== 'none') {
-        avatarVideo.classList.replace('speaking', 'idle');
-      }
-    }
-  }
-
-  form.addEventListener('submit', e => {
+let voz_activada = true;
+document.getElementById("chat-form").addEventListener("submit", async function(e) {
     e.preventDefault();
-    const text = input.value.trim();
-    if (text) sendMessage(text);
-  });
+    const input = document.getElementById("user-input");
+    const message = input.value;
+    input.value = "";
+    const res = await fetch("/api/message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+    });
+    const data = await res.json();
+    document.getElementById("chat-window").innerHTML += "<p>" + data.text + "</p>";
+    if (voz_activada && data.audio) {
+        const audio = new Audio(data.audio);
+        audio.play();
+    }
 });

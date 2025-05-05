@@ -1,5 +1,2 @@
-Flask>=2.0
-gunicorn
-Flask-Dance
-openai<1.0.0,>=0.28.0
-gtts
+Flask
+gTTS
