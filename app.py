@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 from gtts import gTTS
 import uuid
 import os
@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def chat():
-    return render_template("chat.html", avatar_video="avatar_male_loop.webm")
+    avatar = session.get('avatar', 'male')
+    return render_template("chat.html", avatar_video=f"{avatar}_loop.webm", avatar_speaking=f"{avatar}_loop.webm")
 
 @app.route("/api/message", methods=["POST"])
 def api_message():
