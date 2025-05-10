@@ -117,3 +117,60 @@ body {
   color: #fff;
   cursor: pointer;
 }
+
+
+/* Mobile-friendly: full screen avatar + chat floating bottom-left */
+.chat-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+.avatar-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-area video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.chat-area {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  max-width: 360px;
+  height: 30%;
+  max-height: 180px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+.chat-form {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+.chat-form input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+.chat-form button {
+  padding: 0 12px;
+  border: none;
+  background: #e91e63;
+  color: #fff;
+  cursor: pointer;
+}

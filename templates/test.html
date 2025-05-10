@@ -1,13 +1,6 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test – Erosi</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-</head>
-<body>
-  <h1>Bienvenido {{ session.user }} al Test de Erosi</h1>
-  <!-- Aquí tu formulario del test -->
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<h2>Test con avatar {{ avatar }}</h2>
+<img src="{{ url_for('static', filename='assets/avatars/' ~ avatar) }}" alt="{{ avatar }}" class="avatar-large">
+<!-- Aquí el contenido del test -->
+{% endblock %}

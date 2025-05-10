@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Elige tu avatar</h2>
+<div class="avatar-grid">
+{% for avatar in avatars %}
+  <div class="avatar-item">
+    <a href="{{ url_for('test', avatar=avatar) }}">
+      <img src="{{ url_for('static', filename='assets/avatars/' ~ avatar) }}" alt="{{ avatar }}">
+    </a>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

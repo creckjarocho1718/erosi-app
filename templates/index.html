@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero">
+  <img src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}" class="logo" alt="Ecstasy Logo">
+  <h1>Bienvenido a Ecstasy</h1>
+  <p>Educación sexual como nunca la habías vivido</p>
+  <a href="{{ url_for('login') }}" class="btn-google">
+    <img src="{{ url_for('static', filename='assets/google_icon.png') }}" alt="Google"> Iniciar sesión con Google
+  </a>
+</div>
+{% endblock %}

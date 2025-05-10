@@ -1,0 +1,17 @@
+# Parche para app.py: resolver NameError y SyntaxError
+
+# 1) Al inicio de app.py, junto a los demás imports de flask, añade session:
+from flask import session
+
+# 2) Reemplaza la función chat() (decorador @app.route("/")) íntegramente por:
+
+@app.route("/")
+def chat():
+    # Obtenemos el avatar desde la sesión o usamos 'male' si no existe
+    avatar = session.get("avatar", "male")
+    # Renderizamos el chat con el avatar idle y de speaking
+    return render_template(
+        "chat.html",
+        avatar_video=f"{avatar}_loop.webm",
+        avatar_speaking=f"{avatar}_loop.webm"
+    )

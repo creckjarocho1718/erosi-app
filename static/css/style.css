@@ -1,67 +1,17 @@
-/* static/css/style.css */
-/* Full-screen background + common styles */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-body {
-  font-family: 'Quicksand', sans-serif;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-}
-.progress-container {
-  width: 100%;
-  background: rgba(0,0,0,0.3);
-  height: 8px;
-}
-.progress-bar {
-  height: 100%;
-  background: #e91e63;
-  transition: width 0.3s ease;
-}
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-}
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
-.option {
-  cursor: pointer;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.1);
-  padding: 1rem;
-  transition: transform 0.2s;
-}
-.option:hover {
-  transform: scale(1.05);
-}
-.option img {
-  display: block;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 0.5rem;
-}
-.option span, .option p {
-  display: block;
-  color: #fff;
-  font-size: 1rem;
-}
-@media (max-width: 600px) {
-  .option img {
-    width: 60px;
-    height: 60px;
-  }
-}
+body { margin:0; font-family:Arial,sans-serif; background:#f2f2f2; }
+header nav { background:#900; padding:10px; display:flex; gap:15px; }
+header nav a { color:#fff; text-decoration:none; }
+.hero { text-align:center; padding:50px; background:url('../assets/bg.jpg') center/cover no-repeat; color:#fff; }
+.hero .logo { width:150px; margin-bottom:20px; }
+.btn-google { display:inline-flex; align-items:center; background:#fff; color:#444; padding:10px 20px; border-radius:5px; text-decoration:none; }
+.btn-google img { width:20px; margin-right:10px; }
+.avatar-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:15px; padding:20px; }
+.avatar-item img { width:100%; border-radius:50%; }
+.avatar-large { width:150px; display:block; margin:20px auto; }
+.chat-container { max-width:600px; margin:20px auto; background:#fff; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; }
+.chat-avatar { text-align:center; padding:10px; background:#eee; }
+.chat-avatar img { width:60px; border-radius:50%; }
+#messages { flex:1; padding:10px; overflow-y:auto; }
+#chat-form { display:flex; border-top:1px solid #ddd; }
+#user-input { flex:1; border:none; padding:10px; }
+#chat-form button { border:none; padding:10px 20px; background:#900; color:#fff; }
