@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecstasy – Test (5/5)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="test-page">
+  <header class="page-header">
+    <img src="assets/img/logo_full_color.png" alt="Ecstasy logo" class="logo">
+    <details class="menu">
+      <summary>☰</summary>
+      <ul>
+        <li><a href="#terms">Términos y condiciones</a></li>
+        <li><a href="#privacy">Política de privacidad</a></li>
+      </ul>
+    </details>
+  </header>
+  <main class="page-content">
+    <div class="question-card">
+      <h2>Selecciona tu Doctor/a</h2>
+      <div class="options">
+        <label>
+          <input type="radio" name="doctor" value="eros">
+          <img src="assets/img/avatar1.png" alt="Dr. Eros">
+          <span>Dr. Eros</span>
+          <details>
+            <summary>Atributos</summary>
+            <ul>
+              <li>Especialista en deseo sexual</li>
+              <li>Terapias tántricas</li>
+              <li>Comunicación de pareja</li>
+            </ul>
+          </details>
+        </label>
+        <label>
+          <input type="radio" name="doctor" value="luna">
+          <img src="assets/img/avatar2.png" alt="Dra. Luna">
+          <span>Dra. Luna</span>
+          <details>
+            <summary>Atributos</summary>
+            <ul>
+              <li>Educación anatómica</li>
+              <li>Lubricación y salud íntima</li>
+              <li>Ejercicios de Kegel</li>
+            </ul>
+          </details>
+        </label>
+        <label>
+          <input type="radio" name="doctor" value="titan">
+          <img src="assets/img/avatar3.png" alt="Dr. Titan">
+          <span>Dr. Titan</span>
+          <details>
+            <summary>Atributos</summary>
+            <ul>
+              <li>Control de eyaculación</li>
+              <li>Resistencia sexual</li>
+              <li>Posturas avanzadas</li>
+            </ul>
+          </details>
+        </label>
+        <label>
+          <input type="radio" name="doctor" value="aurora">
+          <img src="assets/img/avatar4.png" alt="Dra. Aurora">
+          <span>Dra. Aurora</span>
+          <details>
+            <summary>Atributos</summary>
+            <ul>
+              <li>Terapia de pareja</li>
+              <li>Salud hormonal</li>
+              <li>Manejo del dolor</li>
+            </ul>
+          </details>
+        </label>
+        <label>
+          <input type="radio" name="doctor" value="phoenix">
+          <img src="assets/img/avatar5.png" alt="Dr. Phoenix">
+          <span>Dr. Phoenix</span>
+          <details>
+            <summary>Atributos</summary>
+            <ul>
+              <li>Exploración de fantasías</li>
+              <li>Uso de juguetes sexuales</li>
+              <li>Placer y conexión emocional</li>
+            </ul>
+          </details>
+        </label>
+        <label>
+          <input type="radio" name="doctor" value="vega">
+          <img src="assets/img/avatar6.png" alt="Dra. Vega">
+          <span>Dra. Vega</span>
+          <details>
+            <summary>Atributos</summary>
+            <ul>
+              <li>Orientación LGBTQ+</li>
+              <li>Identidad de género</li>
+              <li>Inclusión y diversidad</li>
+            </ul>
+          </details>
+        </label>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer">
+    <div class="progress-bar"><div class="progress" style="width:100%;"></div></div>
+    <script>
+      document.querySelectorAll('input[name="doctor"]').forEach(opt => {
+        opt.addEventListener('change', () => window.location.href='chat.html');
+      });
+    </script>
+    <p>© 2025 Ecstasy. Política de privacidad. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

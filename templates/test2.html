@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ecstasy – Test (2/5)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="test-page">
+  <header class="page-header">
+    <img src="assets/img/logo_white.png" alt="Ecstasy logo" class="logo"/>
+    <details class="menu"><summary>☰</summary>
+      <ul>
+        <li><a href="#terms">Términos y condiciones</a></li>
+        <li><a href="#privacy">Política de privacidad</a></li>
+      </ul>
+    </details>
+  </header>
+  <main class="page-content">
+    <div class="question-card">
+      <h2>¿Cuál es tu preferencia?</h2>
+      <div class="options">
+        <label><input type="radio" name="orientation" value="heterosexual"/><div class="box">👫<span>Heterosexual</span></div></label>
+        <label><input type="radio" name="orientation" value="bisexual"/><div class="box">💞<span>Bisexual</span></div></label>
+        <label><input type="radio" name="orientation" value="pansexual"/><div class="box">✨<span>Pansexual</span></div></label>
+        <label><input type="radio" name="orientation" value="other"/><div class="box">❓<span>Otros</span></div></label>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer">
+    <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
+    <p>© 2025 Ecstasy. Política de privacidad. Todos los derechos reservados.</p>
+  </footer>
+  <script>
+    document.querySelectorAll('input[name="orientation"]').forEach(opt => {
+      opt.addEventListener('change', () => location.href='test3/index.html');
+    });
+  </script>
+</body>
+</html>

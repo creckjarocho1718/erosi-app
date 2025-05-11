@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ecstasy – Test (1/5)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="test-page">
+
+  <header class="page-header">
+    <img src="assets/img/logo_full_color.png" alt="Ecstasy logo" class="logo"/>
+    <details class="menu">
+      <summary>☰</summary>
+      <ul>
+        <li><a href="#terms">Términos y condiciones</a></li>
+        <li><a href="#privacy">Política de privacidad</a></li>
+      </ul>
+    </details>
+  </header>
+
+  <main class="page-content">
+    <div class="question-card">
+      <h2>¿Cuál es tu género?</h2>
+      <div class="options">
+        <label>
+          <input type="radio" name="gender" value="male"/>
+          <img src="assets/img/hombre.png" alt="Hombre"/>
+          <span>Hombre</span>
+        </label>
+        <label>
+          <input type="radio" name="gender" value="female"/>
+          <img src="assets/img/mujer.png" alt="Mujer"/>
+          <span>Mujer</span>
+        </label>
+        <label>
+          <input type="radio" name="gender" value="other"/>
+          <img src="assets/img/otro.png" alt="Otro"/>
+          <span>Otro</span>
+        </label>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <div class="progress-bar">
+      <div class="progress" style="width: 20%;"></div>
+    </div>
+    <p>© 2025 Ecstasy. Política de privacidad. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Avanza al siguiente al seleccionar una opción
+    document.querySelectorAll('input[name="gender"]').forEach(opt => {
+      opt.addEventListener('change', () => {
+        window.location.href = 'test2.html';
+      });
+    });
+  </script>
+
+</body>
+</html>

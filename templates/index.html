@@ -1,11 +1,23 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="hero">
-  <img src="{{ url_for('static', filename='assets/ecstasy_logo.png') }}" class="logo" alt="Ecstasy Logo">
-  <h1>Bienvenido a Ecstasy</h1>
-  <p>Educación sexual como nunca la habías vivido</p>
-  <a href="{{ url_for('login') }}" class="btn-google">
-    <img src="{{ url_for('static', filename='assets/google_icon.png') }}" alt="Google"> Iniciar sesión con Google
-  </a>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ecstasy – Login</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="login-container">
+    <div class="overlay"></div>
+    <div class="content">
+      <img src="assets/img/logo_white.png" alt="Ecstasy logo" class="logo"/>
+      <h1>Bienvenido a Ecstasy</h1>
+      <p>Educación sexual como nunca la habías vivido</p>
+      <button class="btn-google">
+        <img src="assets/img/google_g.png" alt="Google logo"/>
+        Iniciar sesión con Google
+      </button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ecstasy – Test (4/5)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="test-page">
+
+  <header class="page-header">
+    <img src="assets/img/logo_full_color.png" alt="Ecstasy logo" class="logo" />
+    <details class="menu">
+      <summary>☰</summary>
+      <ul>
+        <li><a href="#terms">Términos y condiciones</a></li>
+        <li><a href="#privacy">Política de privacidad</a></li>
+      </ul>
+    </details>
+  </header>
+
+  <main class="page-content">
+    <div class="question-card">
+      <h2>¿Qué tema te interesa explorar?</h2>
+      <div class="options">
+        <label>
+          <input type="checkbox" name="topic" value="juguetes"/>
+          <div class="box">Juguetes sexuales</div>
+        </label>
+        <label>
+          <input type="checkbox" name="topic" value="posiciones"/>
+          <div class="box">Posiciones</div>
+        </label>
+        <label>
+          <input type="checkbox" name="topic" value="pareja"/>
+          <div class="box">Problemas de pareja</div>
+        </label>
+        <label>
+          <input type="checkbox" name="topic" value="comunicacion"/>
+          <div class="box">Comunicación íntima</div>
+        </label>
+        <label>
+          <input type="checkbox" name="topic" value="salud"/>
+          <div class="box">Salud sexual</div>
+        </label>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+    <p>© 2025 Ecstasy. Política de privacidad. Todos los derechos reservados.</p>
+  </footer>
+
+  
+
+
+<script>
+  document.querySelectorAll('input[name="topic"]').forEach(opt => {
+    opt.addEventListener('change', () => {
+      window.location.href = '../test5/index.html';
+    });
+  });
+</script>
+
+</body>
+</html>
